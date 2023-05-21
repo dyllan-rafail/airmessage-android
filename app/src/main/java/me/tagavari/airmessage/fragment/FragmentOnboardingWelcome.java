@@ -38,17 +38,10 @@ public class FragmentOnboardingWelcome extends FragmentCommunication<FragmentCom
 	@Override
 	public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 		//Hooking up the views
-		view.findViewById(R.id.button_connect_google).setOnClickListener(this::launchAuthGoogle);
-		view.findViewById(R.id.button_connect_email).setOnClickListener(this::launchAuthEmail);
 		view.findViewById(R.id.button_manual).setOnClickListener(this::launchManualConnect);
 		view.findViewById(R.id.button_manual).setOnLongClickListener(this::launchSkipConfig);
-		((TextView) view.findViewById(R.id.label_privacypolicy)).setMovementMethod(LinkMovementMethod.getInstance());
 		
-		//Setting up Firebase sign-in
-		welcomeGoogleSignIn = new WelcomeGoogleSignIn(this);
-		if(!welcomeGoogleSignIn.isSupported()) {
-			view.findViewById(R.id.button_connect_google).setVisibility(View.GONE);
-		}
+		
 	}
 	
 	private void launchManualConnect(View view) {
@@ -77,11 +70,6 @@ public class FragmentOnboardingWelcome extends FragmentCommunication<FragmentCom
 		return true;
 	}
 	
-	private void launchAuthGoogle(View view) {
-		welcomeGoogleSignIn.launch();
-	}
+
 	
-	private void launchAuthEmail(View view) {
-	
-	}
 }

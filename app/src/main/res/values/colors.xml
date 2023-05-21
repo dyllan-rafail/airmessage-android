@@ -34,7 +34,7 @@
 	<color name="navbarDivider">#E0E0E0</color>
 	<color name="navbarBackground">#FFF</color>
 	<color name="navbarBackgroundProtected">#F5F5F5</color>
-	<color name="colorBackgroundSurface">#F5F5F5</color>
+	<color name="colorBackgroundSurface">#000000</color>
 	<color name="colorBackgroundClean">#FFF</color>
 
 	<color name="colorCleanScrim">#66FFFFFF</color>

@@ -9,17 +9,7 @@ plugins {
 def isFullVariant = getGradle().getStartParameter().getTaskRequests().any { request ->
 	request.args.any { it.contains("Full") }
 }
-if(isFullVariant) {
-	apply plugin: "com.google.gms.google-services"
-	apply plugin: "com.google.firebase.crashlytics"
-	
-	apply plugin: "com.google.android.libraries.mapsplatform.secrets-gradle-plugin"
-	
-	secrets {
-		propertiesFileName "secrets.properties"
-		defaultPropertiesFileName = "secrets.default.properties"
-	}
-}
+
 
 //Load shared keystore
 def sharedKeystoreFile = rootProject.file("signingshared/shared.keystore")
@@ -54,7 +44,7 @@ android {
 	}
 	compileSdkVersion 31
 	defaultConfig {
-		applicationId "me.tagavari.airmessage"
+		applicationId "dyllan.airmessage"
 		minSdkVersion 23
 		targetSdkVersion 31
 		versionName "3.5.2"
@@ -71,7 +61,7 @@ android {
 			applicationIdSuffix ".debug"
 			versionNameSuffix "-DEBUG"
 
-			resValue "string", "applicationId", "me.tagavari.airmessage.debug"
+			resValue "string", "applicationId", "dyllan.airmessage.debug"
 
 			//Use shared, or default to debug if unavailable
 			if(sharedKeystoreFile.exists()) {
@@ -84,7 +74,7 @@ android {
 
 			//proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
 
-			resValue "string", "applicationId", "me.tagavari.airmessage"
+			resValue "string", "applicationId", "dyllan.airmessage"
 
 			if(keystoreProperties) {
 				signingConfig signingConfigs.release
@@ -184,21 +174,21 @@ dependencies {
 	implementation "com.github.chrisbanes:PhotoView:2.3.0"
 
 	//ML Kit
-	fullImplementation "com.google.mlkit:smart-reply:17.0.1"
+	//fullImplementation "com.google.mlkit:smart-reply:17.0.1"
 
-	//Firebase
-	fullImplementation platform("com.google.firebase:firebase-bom:30.2.0")
+	// //Firebase
+	// fullImplementation platform("com.google.firebase:firebase-bom:30.2.0")
 
-	fullImplementation "com.google.firebase:firebase-core"
-	fullImplementation "com.google.firebase:firebase-messaging-ktx"
-	fullImplementation "com.google.firebase:firebase-auth-ktx"
-	fullImplementation "com.google.firebase:firebase-analytics-ktx"
-	fullImplementation "com.google.firebase:firebase-crashlytics-ktx"
+	// fullImplementation "com.google.firebase:firebase-core"
+	// fullImplementation "com.google.firebase:firebase-messaging-ktx"
+	// fullImplementation "com.google.firebase:firebase-auth-ktx"
+	// fullImplementation "com.google.firebase:firebase-analytics-ktx"
+	// fullImplementation "com.google.firebase:firebase-crashlytics-ktx"
 
-	//GMS
-	fullImplementation "com.google.android.gms:play-services-maps:18.0.2"
-	fullImplementation "com.google.android.gms:play-services-location:20.0.0"
-	fullImplementation "com.google.android.gms:play-services-auth:20.2.0"
+	// //GMS
+	// fullImplementation "com.google.android.gms:play-services-maps:18.0.2"
+	// fullImplementation "com.google.android.gms:play-services-location:20.0.0"
+	// fullImplementation "com.google.android.gms:play-services-auth:20.2.0"
 
 	//CameraX
 	def camerax_version = "1.1.0-rc02"
